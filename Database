@@ -1,0 +1,137 @@
+-- MySQL dump 10.13  Distrib 8.0.28, for Linux (x86_64)
+--
+-- Host: localhost    Database: travel_agency_ws
+-- ------------------------------------------------------
+-- Server version	8.0.28
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!50503 SET NAMES utf8 */;
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET TIME_ZONE='+00:00' */;
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+
+--
+-- Table structure for table `cities`
+--
+
+DROP TABLE IF EXISTS `cities`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `cities` (
+  `id_city` int NOT NULL AUTO_INCREMENT,
+  `name_city` varchar(100) NOT NULL,
+  `id_country` int NOT NULL,
+  `latitude` float DEFAULT NULL,
+  `longitude` float DEFAULT NULL,
+  `city_picture` varchar(350) DEFAULT NULL,
+  `price` float DEFAULT NULL,
+  PRIMARY KEY (`id_city`),
+  KEY `fk_country` (`id_country`),
+  CONSTRAINT `fk_country` FOREIGN KEY (`id_country`) REFERENCES `countries` (`id_country`)
+) ENGINE=InnoDB AUTO_INCREMENT=29 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `cities`
+--
+
+LOCK TABLES `cities` WRITE;
+/*!40000 ALTER TABLE `cities` DISABLE KEYS */;
+INSERT INTO `cities` VALUES (1,'Paris',1,48.856,2.352,'/home/far/Desktop/Travel_Agency_WS/images/citiesParis.jpg',52.3),(2,'Toulouse',1,43.604,1.444,'/home/far/Desktop/Travel_Agency_WS/images/cities/Toulouse.jpg',172.68),(3,'Lille',1,50.629,3.057,'/home/far/Desktop/Travel_Agency_WS/images/cities/Lille.jpg',55.2),(4,'Strasbourg',1,48.573,7.752,'/home/far/Desktop/Travel_Agency_WS/images/citiesStrasbourg.jpg',66.23),(5,'Amsterdam',2,52.37,4.895,'/home/far/Desktop/Travel_Agency_WS/images/cities/Amsterdam.jpg',241.32),(6,'Rotterdam',2,51.924,4.477,'/home/far/Desktop/Travel_Agency_WS/images/cities/Rotterdam.jpg',215.45),(7,'La haye',2,52.07,4.3,'/home/far/Desktop/Travel_Agency_WS/images/cities/LaHaye.jpg',200.34),(8,'Utrecht',2,52.09,5.121,'/home/far/Desktop/Travel_Agency_WS/images/cities/Utrecht.jpg',195.12),(9,'Bruxelles',3,50.85,4.351,'/home/far/Desktop/Travel_Agency_WS/images/cities/Bruxelles.jpg',100.01),(10,'Liege',3,50.632,5.579,'/home/far/Desktop/Travel_Agency_WS/images/cities/Liege.jpg',110.87),(11,'Namur',3,50.467,4.871,'/home/far/Desktop/Travel_Agency_WS/images/cities/Namur.jpg',120.98),(12,'Charleroi',3,50.41,4.444,'/home/far/Desktop/Travel_Agency_WS/images/cities/Charleroi.jpg',125.41),(13,'Berlin',4,52.52,13.404,'/home/far/Desktop/Travel_Agency_WS/images/cities/Berlin.jpg',270.78),(14,'Hambourg',4,53.551,9.999,'/home/far/Desktop/Travel_Agency_WS/images/cities/Hambourg.jpg',275.1),(15,'Mayence',4,49.992,8.247,'/home/far/Desktop/Travel_Agency_WS/images/cities/Mayence.jpg',281.56),(16,'Dortmund',4,51.513,7.465,'/home/far/Desktop/Travel_Agency_WS/images/cities/Dortmund.jpg',290.05),(17,'Athenes',5,37.814,23.471,'/home/far/Desktop/Travel_Agency_WS/images/cities/Athenes.jpg',425.63),(18,'Larissa',5,39.639,22.419,'/home/far/Desktop/Travel_Agency_WS/images/cities/Larissa.jpg',445.15),(19,'Thessalonique',5,40.64,22.944,'/home/far/Desktop/Travel_Agency_WS/images/cities/Thessalonique.jpg',450.3),(20,'Patras',5,38.248,21.738,'/home/far/Desktop/Travel_Agency_WS/images/cities/Patras.jpg',465),(21,'Zagreb',6,45.815,15.981,'/home/far/Desktop/Travel_Agency_WS/images/cities/Zagreb.jpg',540.37),(22,'Split',6,43.508,16.44,'/home/far/Desktop/Travel_Agency_WS/images/cities/Split.jpg',550.12),(23,'Rijeka',6,45.327,14.442,'/home/far/Desktop/Travel_Agency_WS/images/cities/Rijeka.jpg',537.66),(24,'Osijek',6,45.554,18.695,'/home/far/Desktop/Travel_Agency_WS/images/cities/Osijek.jpg',532.02),(25,'Madrid',7,40.416,-3.703,'/home/far/Desktop/Travel_Agency_WS/images/cities/Madrid.jpg',300),(26,'Malaga',7,36.721,-4.421,'/home/far/Desktop/Travel_Agency_WS/images/cities/Malaga.jpg',320.45),(27,'Valencia',7,39.469,-0.376,'/home/far/Desktop/Travel_Agency_WS/images/cities/Valencia.jpg',310.94),(28,'Barcelone',7,41.385,2.173,'/home/far/Desktop/Travel_Agency_WS/images/cities/Barcelone.jpg',305.27);
+/*!40000 ALTER TABLE `cities` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `countries`
+--
+
+DROP TABLE IF EXISTS `countries`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `countries` (
+  `id_country` int NOT NULL AUTO_INCREMENT,
+  `name_country` varchar(100) NOT NULL,
+  PRIMARY KEY (`id_country`)
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `countries`
+--
+
+LOCK TABLES `countries` WRITE;
+/*!40000 ALTER TABLE `countries` DISABLE KEYS */;
+INSERT INTO `countries` VALUES (1,'France'),(2,'Pays-Bas'),(3,'Belgique'),(4,'Allemagne'),(5,'Grece'),(6,'Croatie'),(7,'Espagne');
+/*!40000 ALTER TABLE `countries` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `destination_type`
+--
+
+DROP TABLE IF EXISTS `destination_type`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `destination_type` (
+  `id_type_dest` int NOT NULL AUTO_INCREMENT,
+  `name_type_dest` varchar(50) NOT NULL,
+  PRIMARY KEY (`id_type_dest`)
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `destination_type`
+--
+
+LOCK TABLES `destination_type` WRITE;
+/*!40000 ALTER TABLE `destination_type` DISABLE KEYS */;
+INSERT INTO `destination_type` VALUES (1,'Monuments historique'),(2,'Opera/Theatre'),(3,'Palais/Chateau'),(4,'Eglise/Cathedrale'),(5,'Musee/Centre culturel'),(6,'Parc/Jardin/Zoo'),(7,'Batiments/Gare'),(8,'Ruine ancienne/Sentier historique'),(9,'Stade'),(10,'Pont'),(11,'Quai'),(12,'Ecluse'),(13,'Place');
+/*!40000 ALTER TABLE `destination_type` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `destinations`
+--
+
+DROP TABLE IF EXISTS `destinations`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `destinations` (
+  `id_destination` int NOT NULL AUTO_INCREMENT,
+  `name_dest` varchar(100) NOT NULL,
+  `type_dest` int NOT NULL,
+  `id_city` int NOT NULL,
+  `dest_picture` varchar(350) NOT NULL,
+  PRIMARY KEY (`id_destination`),
+  KEY `fk_destinations` (`type_dest`),
+  KEY `fk_cities` (`id_city`),
+  CONSTRAINT `fk_cities` FOREIGN KEY (`id_city`) REFERENCES `cities` (`id_city`),
+  CONSTRAINT `fk_destinations` FOREIGN KEY (`type_dest`) REFERENCES `destination_type` (`id_type_dest`)
+) ENGINE=InnoDB AUTO_INCREMENT=142 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `destinations`
+--
+
+LOCK TABLES `destinations` WRITE;
+/*!40000 ALTER TABLE `destinations` DISABLE KEYS */;
+INSERT INTO `destinations` VALUES (1,'Pantheon',1,1,'/home/far/Desktop/Travel_Agency_WS/images/destinations/France/Paris/pantheon.jpg'),(2,'Tour Eiffel',1,1,'/home/far/Desktop/Travel_Agency_WS/images/destinations/France/Paris/toureiffel.jpeg'),(3,'Musee du Louvre',5,1,'/home/far/Desktop/Travel_Agency_WS/images/destinations/France/Paris/museedulouvre.jpeg'),(4,'Conciergerie',3,1,'/home/far/Desktop/Travel_Agency_WS/images/destinations/France/Paris/conciergerie.jpg'),(5,'Arc de Triomphe',1,1,'/home/far/Desktop/Travel_Agency_WS/images/destinations/France/Paris/arctriomphe.jpg'),(6,'Chateau de Bellevue',3,2,'/home/far/Desktop/Travel_Agency_WS/images/destinations/France/Toulouse/chateaubellevue.jpg'),(7,'Place du Capitole',13,2,'/home/far/Desktop/Travel_Agency_WS/images/destinations/France/Toulouse/capitole.jpg'),(8,'Pont Neuf',10,2,'/home/far/Desktop/Travel_Agency_WS/images/destinations/France/Toulouse/pontneuf.jpg'),(9,'Eglise du Gesu',4,2,'/home/far/Desktop/Travel_Agency_WS/images/destinations/France/Toulouse/eglisegesu.jpg'),(10,'Pont Jumeaux',10,2,'/home/far/Desktop/Travel_Agency_WS/images/destinations/France/Toulouse/pontsjumeaux.jpg'),(11,'Citadelle',1,3,'/home/far/Desktop/Travel_Agency_WS/images/destinations/France/Lille/citadelle.jpg'),(12,'Eglise Saint Andre',4,3,'/home/far/Desktop/Travel_Agency_WS/images/destinations/France/Lille/eglisesaintandre.jpg'),(13,'Palais Rameau',3,3,'/home/far/Desktop/Travel_Agency_WS/images/destinations/France/Lille/palaisrameau.jpg'),(14,'Opera de Lille',2,3,'/home/far/Desktop/Travel_Agency_WS/images/destinations/France/Lille/operadelille.jpg'),(15,'Vieille Bourse',1,3,'/home/far/Desktop/Travel_Agency_WS/images/destinations/France/Lille/vieillebourse.jpg'),(16,'Place Kleber',13,4,'/home/far/Desktop/Travel_Agency_WS/images/destinations/France/Strasbourg/placekleber.jpg'),(17,'Cathedrale Notre Dame de Strasbourg',4,4,'/home/far/Desktop/Travel_Agency_WS/images/destinations/France/Strasbourg/cathedrale.jpg'),(18,'Chateau de Pourtales',3,4,'/home/far/Desktop/Travel_Agency_WS/images/destinations/France/Strasbourg/chateaudepourtales.jpg'),(19,'Maison Baer',1,4,'/home/far/Desktop/Travel_Agency_WS/images/destinations/France/Strasbourg/maisonbaer.jpg'),(20,'Palais Episcopal',3,4,'/home/far/Desktop/Travel_Agency_WS/images/destinations/France/Strasbourg/palaisepiscopal.jpg'),(21,'Place Dam',13,5,'/home/far/Desktop/Travel_Agency_WS/images/destinations/Pays Bas/Amsterdam/placedam.jpg'),(22,'Maison Anne Frank',5,5,'/home/far/Desktop/Travel_Agency_WS/images/destinations/Pays Bas/Amsterdam/maisonannefranck.jpg'),(23,'Gare Centrale Amsterdam',7,5,'/home/far/Desktop/Travel_Agency_WS/images/destinations/Pays Bas/Amsterdam/garecentrale.jpg'),(24,'Johan Cruyff Arena',9,5,'/home/far/Desktop/Travel_Agency_WS/images/destinations/Pays Bas/Amsterdam/johanarena.jpg'),(25,'Basilique Saint Nicolas Amsterdam',4,5,'/home/far/Desktop/Travel_Agency_WS/images/destinations/Pays Bas/Amsterdam/basiliquesaintnicolas.jpeg'),(26,'Pont Erasme',10,6,'/home/far/Desktop/Travel_Agency_WS/images/destinations/Pays Bas/Rotterdam/ponterasme.jpg'),(27,'Stade de Feyenoord',9,6,'/home/far/Desktop/Travel_Agency_WS/images/destinations/Pays Bas/Rotterdam/stadedefeyennord.jpg'),(28,'Wilhelminapier',7,6,'/home/far/Desktop/Travel_Agency_WS/images/destinations/Pays Bas/Rotterdam/wihelminapier.jpg'),(29,'Westerkade',11,6,'/home/far/Desktop/Travel_Agency_WS/images/destinations/Pays Bas/Rotterdam/westerkade.jpg'),(30,'Eglise Saint Laurent Rotterdam',4,6,'/home/far/Desktop/Travel_Agency_WS/images/destinations/Pays Bas/Rotterdam/eglisesaintlaurent.jpg'),(31,'Madurodam',6,7,'/home/far/Desktop/Travel_Agency_WS/images/destinations/Pays Bas/LaHaye/madurodam.jpg'),(32,'Palais de la Paix',3,7,'/home/far/Desktop/Travel_Agency_WS/images/destinations/Pays Bas/LaHaye/palaisdelapaix.jpg'),(33,'Panorama Mesdag',5,7,'/home/far/Desktop/Travel_Agency_WS/images/destinations/Pays Bas/LaHaye/panoramamesdag.jpg'),(34,'Lange Voorhout',8,7,'/home/far/Desktop/Travel_Agency_WS/images/destinations/Pays Bas/LaHaye/langevoorhout.jpg'),(35,'International Crime Court',7,7,'/home/far/Desktop/Travel_Agency_WS/images/destinations/Pays Bas/LaHaye/internationalcriminalcourt.jpg'),(36,'Canals area',8,8,'/home/far/Desktop/Travel_Agency_WS/images/destinations/Pays Bas/Utercht/canalsarea.jpg'),(37,'Tour de la cathedrale Utrecht',4,8,'/home/far/Desktop/Travel_Agency_WS/images/destinations/Pays Bas/Uterch/tourdelacathedrale.jpg'),(38,'Weerdsluis',12,8,'/home/far/Desktop/Travel_Agency_WS/images/destinations/Pays Bas/Uterch/tweerdsluis.jpg'),(39,'Paushuize',7,8,'/home/far/Desktop/Travel_Agency_WS/images/destinations/Pays Bas/Utercht/paushuize.jpg'),(40,'Pandhof Domkerk',4,8,'/home/far/Desktop/Travel_Agency_WS/images/destinations/Pays Bas/Utercht/pandhofdomkerk.jpg'),(41,'Atomium',1,9,'/home/far/Desktop/Travel_Agency_WS/images/destinations/Belgique/Bruxelles/atomium.jpg'),(42,'Grand Place Bruxelles',13,9,'/home/far/Desktop/Travel_Agency_WS/images/destinations/Belgique/Bruxelles/grandeplacebruxelles.jpg'),(43,'Palais Royal de Bruxelles',3,9,'/home/far/Desktop/Travel_Agency_WS/images/destinations/Belgique/Bruxelles/palaisdebruxelles.jpeg'),(44,'Parc du Cinquantenaire',6,9,'/home/far/Desktop/Travel_Agency_WS/images/destinations/Belgique/Bruxelles/parcducinquantenaire.jpg'),(45,'AfricaMuseum',5,9,'/home/far/Desktop/Travel_Agency_WS/images/destinations/Belgique/Bruxelles/africamuseum.jpg'),(46,'Montagne de Bueren',8,10,'/home/far/Desktop/Travel_Agency_WS/images/destinations/Belgique/Liege/montagnedebueren.jpg'),(47,'Coteaux de la Citadelle',8,10,'/home/far/Desktop/Travel_Agency_WS/images/destinations/Belgique/Liege/coteauxdelacitadelle.jpg'),(48,'Gare de Liege Guillemins',7,10,'/home/far/Desktop/Travel_Agency_WS/images/destinations/Belgique/Liege/garedeliegeguillemins.jpg'),(49,'Eglise Saint Jacques Liege',4,10,'/home/far/Desktop/Travel_Agency_WS/images/destinations/Belgique/Liege/eglisesaintjacquesliege.jpg'),(50,'Cite Miroir',5,10,'/home/far/Desktop/Travel_Agency_WS/images/destinations/Belgique/Liege/citemiroir.jpg'),(51,'Citadelle de Namur',1,11,'/home/far/Desktop/Travel_Agency_WS/images/destinations/Belgique/Namur/citadelledenamur.jpg'),(52,'Musee provincial Felicien Rops',5,11,'/home/far/Desktop/Travel_Agency_WS/images/destinations/Belgique/Namur/museeprovincialfelicienrops.jpeg'),(53,'Jardin Annevoie',6,11,'/home/far/Desktop/Travel_Agency_WS/images/destinations/Belgique/Namur/jardinannevoie.jpg'),(54,'Place Armes',13,11,'/home/far/Desktop/Travel_Agency_WS/images/destinations/Belgique/Namur/placearmes.jpg'),(55,'Palais des Congres',6,11,'/home/far/Desktop/Travel_Agency_WS/images/destinations/Belgique/Namur/palaisdescongres.jpg'),(56,'Le Bois du Cazier',5,12,'/home/far/Desktop/Travel_Agency_WS/images/destinations/Belgique/Charleroi/leboisducazier.jpg'),(57,'Comedie Centrale de Charleroi',2,12,'/home/far/Desktop/Travel_Agency_WS/images/destinations/Belgique/Charleroi/comediecentraledecharleroi.jpg'),(58,'Passage de la Bourse',8,12,'/home/far/Desktop/Travel_Agency_WS/images/destinations/Belgique/Charleroi/passagedelabourse.jpeg'),(59,'Maison Doree',8,12,'/home/far/Desktop/Travel_Agency_WS/images/destinations/Belgique/Charleroi/maisondoree.jpg'),(60,'Hotel de Ville',7,12,'/home/far/Desktop/Travel_Agency_WS/images/destinations/Belgique/Charleroi/hoteldeville.jpg'),(61,'Porte de Brandebourg',1,13,'/home/far/Desktop/Travel_Agency_WS/images/destinations/Allemagne/Berlin/portedebrandebourg.jpg'),(62,'Bundestag',7,13,'/home/far/Desktop/Travel_Agency_WS/images/destinations/Allemagne/Berlin/bundestag.jpg'),(63,'Cathedrale de Berlin',4,13,'/home/far/Desktop/Travel_Agency_WS/images/destinations/Allemagne/Berlin/cathedraledeberlin.jpg'),(64,'Olympiastadion Berlin',9,13,'/home/far/Desktop/Travel_Agency_WS/images/destinations/Allemagne/Berlin/olympiastadionberlin.jpeg'),(65,'Parc Mauer',6,13,'/home/far/Desktop/Travel_Agency_WS/images/destinations/Allemagne/Berlin/parcmauer.jpg'),(66,'Miniatur Wunderland',5,14,'/home/far/Desktop/Travel_Agency_WS/images/destinations/Allemagne/Hambourg/miniaturwunderland.jpg'),(67,'Speicherstadt',7,14,'/home/far/Desktop/Travel_Agency_WS/images/destinations/Allemagne/Hambourg/speicherstadt.jpg'),(68,'Hamburg Town Hall',7,14,'/home/far/Desktop/Travel_Agency_WS/images/destinations/Allemagne/Hambourg/hamburgtownhall.jpg'),(69,'St Nikolai Memorial',1,14,'/home/far/Desktop/Travel_Agency_WS/images/destinations/Allemagne/Hambourg/stnikolaimemorial.jpg'),(70,'Rathausmarkt',13,14,'/home/far/Desktop/Travel_Agency_WS/images/destinations/Allemagne/Hambourg/rathausmarkt.jpg'),(71,'Musee Gutenberg',5,15,'/home/far/Desktop/Travel_Agency_WS/images/destinations/Allemagne/Mayence/museegutenberg.jpg'),(72,'Cathedrale St Etienne de Mayence',4,15,'/home/far/Desktop/Travel_Agency_WS/images/destinations/Allemagne/Mayence/cathedralestetiennedemayence.jpg'),(73,'Chateau de Biebrich',3,15,'/home/far/Desktop/Travel_Agency_WS/images/destinations/Allemagne/Mayence/chateaudebiebrich.jpg'),(74,'Musee du Land',5,15,'/home/far/Desktop/Travel_Agency_WS/images/destinations/Allemagne/Mayence/museeduland.jpg'),(75,'Kirschgarten',7,15,'/home/far/Desktop/Travel_Agency_WS/images/destinations/Allemagne/Mayence/kirschgarten.jpg'),(76,'Zoo Dortmund',6,16,'/home/far/Desktop/Travel_Agency_WS/images/destinations/Allemagne/Dortmund/zoodortmund.jpg'),(77,'Dortmund U Tower',7,16,'/home/far/Desktop/Travel_Agency_WS/images/destinations/Allemagne/Dortmund/dortmundutower.jpg'),(78,'Westfalenpark',6,16,'/home/far/Desktop/Travel_Agency_WS/images/destinations/Allemagne/Dortmund/westfalenpark.jpg'),(79,'German Football Museum',5,16,'/home/far/Desktop/Travel_Agency_WS/images/destinations/Allemagne/Dortmund/germanfootballmuseum.jpg'),(80,'Signal Iduna Park',9,16,'/home/far/Desktop/Travel_Agency_WS/images/destinations/Allemagne/Dortmund/signalidunapark.jpg'),(81,'Acropole',8,17,'/home/far/Desktop/Travel_Agency_WS/images/destinations/Grèce/Athènes/acropole.jpg'),(82,'Parthenon',8,17,'/home/far/Desktop/Travel_Agency_WS/images/destinations/Grèce/Athènes/parthenon.jpg'),(83,'Panathenaic Stadium',9,17,'/home/far/Desktop/Travel_Agency_WS/images/destinations/Grèce/Athènes/panathenaicstadium.jpg'),(84,'Temple heplaisteion',8,17,'/home/far/Desktop/Travel_Agency_WS/images/destinations/Grèce/Athènes/templehephaistos.jpg'),(85,'Odeon herode atticus',2,17,'/home/far/Desktop/Travel_Agency_WS/images/destinations/Grèce/Athènes/odeonherodeatticus.jpg'),(86,'Leros naos agios achillou',4,18,'/home/far/Desktop/Travel_Agency_WS/images/destinations/Grèce/Larissa/lerosnaosagiouachilliou.jpg'),(87,'Larissa ancient ruins',8,18,'/home/far/Desktop/Travel_Agency_WS/images/destinations/Grèce/Larissa/larissaancientruins.jpg'),(88,'Bezesteni of larissa',1,18,'/home/far/Desktop/Travel_Agency_WS/images/destinations/Grèce/Larissa/bezesteni.jpg'),(89,'Moulin pappas',1,18,'/home/far/Desktop/Travel_Agency_WS/images/destinations/Grèce/Larissa/moulinpappas.jpg'),(90,'The church of saint george',4,18,'/home/far/Desktop/Travel_Agency_WS/images/destinations/Grèce/Larissa/thechurchofsaintgeorge.jpg'),(91,'Tour blanche de Thessalonique',7,19,'/home/far/Desktop/Travel_Agency_WS/images/destinations/Grèce/Thessalonique/tourblanche.jpg'),(92,'Toumba Stadium',9,19,'/home/far/Desktop/Travel_Agency_WS/images/destinations/Grèce/Thessalonique/toumbastadium.jpg'),(93,'Rotunda',8,19,'/home/far/Desktop/Travel_Agency_WS/images/destinations/Grèce/Thessalonique/rotunda.jpg'),(94,'Arche galere de Thessalonique',1,19,'/home/far/Desktop/Travel_Agency_WS/images/destinations/Grèce/Thessalonique/archegalere.jpg'),(95,'Church of agia sofia',4,19,'/home/far/Desktop/Travel_Agency_WS/images/destinations/Grèce/Thessalonique/churchofagiasofia.jpg'),(96,'Castel of patras',3,20,'/home/far/Desktop/Travel_Agency_WS/images/destinations/Grèce/Patras/castleofpatras.jpg'),(97,'Patras ancient odeum ',8,20,'/home/far/Desktop/Travel_Agency_WS/images/destinations/Grèce/Patras/patrasancientodeum.jpg'),(98,'Cathedrale de Saint Andre de patras',4,20,'/home/far/Desktop/Travel_Agency_WS/images/destinations/Grèce/Patras/cathedraledesaintandre.jpg'),(99,'Musee archeologique de patras ',5,20,'/home/far/Desktop/Travel_Agency_WS/images/destinations/Grèce/Patras/museearcheologiquedepatras.jpg'),(100,'Pont a haubans rion antirion',10,20,'/home/far/Desktop/Travel_Agency_WS/images/destinations/Grèce/Patras/pontahauban.jpg'),(101,'Eglise Saint Marc',4,21,'/home/far/Desktop/Travel_Agency_WS/images/destinations/Croatie/Zagreb/eglisesaintmarc.jpg'),(102,'Croatian national theatre',2,21,'/home/far/Desktop/Travel_Agency_WS/images/destinations//home/far/Desktop/Travel_Agency_WS/images/destinations/Croatie/Zagreb/croatiannationaltheatre.jpg'),(103,'Zagreb cathedral',4,21,'/home/far/Desktop/Travel_Agency_WS/images/destinations/Croatie/Zagreb/cathedralezagreb.jpeg'),(104,'Zagreb Glavani Kolodvor',7,21,'/home/far/Desktop/Travel_Agency_WS/images/destinations/Croatie/Zagreb/glavanikolodvor.jpg'),(105,'Stadion maksimir',9,21,'/home/far/Desktop/Travel_Agency_WS/images/destinations/Croatie/Zagreb/stadionmaksimir.jpg'),(106,'Odl town split',1,22,'/home/far/Desktop/Travel_Agency_WS/images/destinations/Croatie/Slipt/odltownofslipt.jpg'),(107,'Cathedral of Saint Domains',4,22,'/home/far/Desktop/Travel_Agency_WS/images/destinations/Croatie/Slipt/cathedralofsaintdomnius.jpg'),(108,'Poljiud Stadium',9,22,'/home/far/Desktop/Travel_Agency_WS/images/destinations/Croatie/Slipt/poljudstadium.jpg'),(109,'Temple of jupiter',8,22,'/home/far/Desktop/Travel_Agency_WS/images/destinations/Croatie/Slipt/templeofjupiter.jpg'),(110,'Kastel gomilica',3,22,'/home/far/Desktop/Travel_Agency_WS/images/destinations/Croatie/Slipt/kastelgomilica.jpg'),(111,'Trsat Castle',3,23,'/home/far/Desktop/Travel_Agency_WS/images/destinations/Croatie/Rijeka/trsatcastle.jpg'),(112,'Odl gateway',8,23,'/home/far/Desktop/Travel_Agency_WS/images/destinations/Croatie/Rijeka/odlgateway.jpg'),(113,'The modello palace',1,23,'/home/far/Desktop/Travel_Agency_WS/images/destinations/Croatie/Rijeka/themodellopalace.jpg'),(114,'Palace of justice',1,23,'/home/far/Desktop/Travel_Agency_WS/images/destinations/Croatie/Rijeka/palaceofjustice.jpg'),(115,'St Jeromes church',4,23,'/home/far/Desktop/Travel_Agency_WS/images/destinations/Croatie/Rijeka/stjeromeschurch.jpg'),(116,'Theatre national croate de osijek',2,24,'/home/far/Desktop/Travel_Agency_WS/images/destinations/Croatie/Osijek/theatrenationalcroate.jpeg'),(117,'Eglise Saint Paul',4,24,'/home/far/Desktop/Travel_Agency_WS/images/destinations/Croatie/Osijek/eglisesaintpaul.jpg'),(118,'Galerie des beaux arts Osijek',1,24,'/home/far/Desktop/Travel_Agency_WS/images/destinations/Croatie/Osijek/galeriedesbeauxarts.jpg'),(119,'Musee archeologique Osijek',5,24,'/home/far/Desktop/Travel_Agency_WS/images/destinations/Croatie/Osijek/museearchelogique.jpg'),(120,'Musee de slavonie',5,24,'/home/far/Desktop/Travel_Agency_WS/images/destinations/Croatie/Osijek/museesalvonie.jpg'),(121,'Palais royal de madrid',1,25,'/home/far/Desktop/Travel_Agency_WS/images/destinations/Espagne/Madrid/palaisroyaldemadrid.jpg'),(122,'Santiago Bernabeu Stadium',9,25,'/home/far/Desktop/Travel_Agency_WS/images/destinations/Espagne/Madrid/santiagobernabeustadium.jpg'),(123,'Palacio de cristal',1,25,'/home/far/Desktop/Travel_Agency_WS/images/destinations/Espagne/Madrid/palaciodecristal.jpg'),(124,'Museo cerralbo',5,25,'/home/far/Desktop/Travel_Agency_WS/images/destinations/Espagne/Madrid/palaciocerralbo.jpg'),(125,'Templo de debod',8,25,'/home/far/Desktop/Travel_Agency_WS/images/destinations/Espagne/Madrid/templodedebod.jpg'),(126,'Malaga cathedral',1,26,'/home/far/Desktop/Travel_Agency_WS/images/destinations/Espagne/Malaga/catedralmalaga.jpg'),(127,'Castillo de gibralfaro',3,26,'/home/far/Desktop/Travel_Agency_WS/images/destinations/Espagne/Malaga/castillodegibralfaro.jpg'),(128,'Teatro romano de Malaga',8,26,'/home/far/Desktop/Travel_Agency_WS/images/destinations/Espagne/Malaga/theatreromain.jpeg'),(129,'Church of Santiago',4,26,'/home/far/Desktop/Travel_Agency_WS/images/destinations/Espagne/Malaga/santiagochurch.jpg'),(130,'Alcazaba',5,26,'/home/far/Desktop/Travel_Agency_WS/images/destinations/Espagne/Malaga/alcazabademalaga.jpg'),(131,'Torres de serranos',1,27,'/home/far/Desktop/Travel_Agency_WS/images/destinations/Espagne/Valencia/torresdeserranosvalencia.jpg'),(132,'Central market of Valencia',7,27,'/home/far/Desktop/Travel_Agency_WS/images/destinations/Espagne/Valencia/centralmarketofvalencia.jpg'),(133,'Valencia cathedral',4,27,'/home/far/Desktop/Travel_Agency_WS/images/destinations/Espagne/Valencia/cathedralvalencia.jpg'),(134,'Estadio de Mestalla',9,27,'/home/far/Desktop/Travel_Agency_WS/images/destinations/Espagne/Valencia/estadiodemestalla.png'),(135,'Castle cullera',3,27,'/home/far/Desktop/Travel_Agency_WS/images/destinations/Espagne/Valencia/castlecullera.jpg'),(136,'Sagrada familia',7,28,'/home/far/Desktop/Travel_Agency_WS/images/destinations/Espagne/Barcelone/sagradafamilia.jpg'),(137,'Casa batllo',7,28,'/home/far/Desktop/Travel_Agency_WS/images/destinations/Espagne/Barcelone/casabatllo.jpg'),(138,'Camp Nou',9,28,'/home/far/Desktop/Travel_Agency_WS/images/destinations/Espagne/Barcelone/campnou.jpg'),(139,'Palais guell',3,28,'/home/far/Desktop/Travel_Agency_WS/images/destinations/Espagne/Barcelone/palaisguell.jpg'),(140,'Edificio del reloj',7,28,'/home/far/Desktop/Travel_Agency_WS/images/destinations/Espagne/Barcelone/edificiodelreloj.jpg');
+/*!40000 ALTER TABLE `destinations` ENABLE KEYS */;
+UNLOCK TABLES;
+/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
+
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+
+-- Dump completed on 2022-04-18 23:16:38
