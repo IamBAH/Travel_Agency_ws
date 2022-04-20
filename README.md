@@ -1,7 +1,7 @@
 # Travel_Agency_ws
 Les codes du Projet de WebServices"Travel_Agency"
- Travel Agency:
-Nous fournissons un service web pour les agences de voyages suivant le protocole SOAP et Rest Architeture. Le service a été intégré dans deux frameworks différents dans Java JAXWS et JAXRS. Outre le service, nous avons construit un client en php qui consomme les deux services en fonction de la disponibilité du service. Par défaut, il appelle le service JAXWS si le service appelé est en panne, il utilise automatiquement le service JAXRS.
+
+Nous fournissons un service web pour les agences de voyages suivant le protocole SOAP et Rest Architeture. Nous avons construit un client en php qui consomme les deux services en fonction de la disponibilité du service. 
 
 
 II.1. Description du service :  
